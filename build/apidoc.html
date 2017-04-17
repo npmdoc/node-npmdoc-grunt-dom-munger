@@ -1,0 +1,563 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/cgross/grunt-dom-munger"
+
+    >grunt-dom-munger (v3.4.0)</a>
+</h1>
+<h4>Read and manipulate HTML with CSS selectors. Ex. read <script> tags from your html.  Remove nodes, add nodes, and more.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.grunt-dom-munger">module grunt-dom-munger</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grunt-dom-munger.grunt-dom-munger">
+            function <span class="apidocSignatureSpan"></span>grunt-dom-munger
+            <span class="apidocSignatureSpan">(grunt)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grunt-dom-munger.dom_munger">
+            function <span class="apidocSignatureSpan">grunt-dom-munger.</span>dom_munger
+            <span class="apidocSignatureSpan">(grunt)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grunt-dom-munger.toString">
+            function <span class="apidocSignatureSpan">grunt-dom-munger.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.grunt-dom-munger.dom_munger">module grunt-dom-munger.dom_munger</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grunt-dom-munger.dom_munger.dom_munger">
+            function <span class="apidocSignatureSpan">grunt-dom-munger.</span>dom_munger
+            <span class="apidocSignatureSpan">(grunt)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.grunt-dom-munger.toString">module grunt-dom-munger.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grunt-dom-munger.toString.toString">
+            function <span class="apidocSignatureSpan">grunt-dom-munger.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.grunt-dom-munger" id="apidoc.module.grunt-dom-munger">module grunt-dom-munger</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.grunt-dom-munger.grunt-dom-munger" id="apidoc.element.grunt-dom-munger.grunt-dom-munger">
+        function <span class="apidocSignatureSpan"></span>grunt-dom-munger
+        <span class="apidocSignatureSpan">(grunt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">grunt-dom-munger = function (grunt) {
+
+  // Project configuration.
+  grunt.initConfig({
+    jshint: {
+      all: [
+        &#x27;Gruntfile.js&#x27;,
+        &#x27;tasks/*.js&#x27;,
+        &#x27;&#x3c;%= nodeunit.tests %&#x3e;&#x27;,
+      ],
+      options: {
+        jshintrc: &#x27;.jshintrc&#x27;,
+      },
+    },
+    // Before generating any new files, remove any previously-created files.
+    clean: {
+      tests: [&#x27;tmp&#x27;],
+    },
+    // Configuration to be run (and then tested).
+    dom_munger: {
+      test: {
+        options: {
+          read: {selector:&#x27;link&#x27;,attribute:&#x27;href&#x27;,writeto:&#x27;mylinks&#x27;,isPath:true},
+          remove: &#x27;#removeMe&#x27;,
+          update: {selector:&#x27;html&#x27;,attribute:&#x27;appmode&#x27;,value:&#x27;production&#x27;},
+          prefix: {selector:&#x27;link&#x27;,attribute:&#x27;href&#x27;,value:&#x27;project-name/&#x27;},
+          suffix: {selector:&#x27;html&#x27;,attribute:&#x27;version&#x27;,value:&#x27;.0.1&#x27;},
+          append: {selector:&#x27;body&#x27;,html:&#x27;&#x3c;div id=&#x22;appended&#x22;&#x3e;Im being appended&#x3c;/div&#x3e;&#x27;},
+          prepend: {selector:&#x27;body&#x27;,html:&#x27;&#x3c;span&#x3e;Im being prepended&#x3c;/span&#x3e;&#x27;},
+          text: {selector:&#x27;title&#x27;,text:&#x27;CHANGED TITLE&#x27;},
+          callback: function($, file){
+            $(&#x27;#sample2&#x27;).text(&#x27;Ive been updated via callback&#x27;);
+            $(&#x27;#filepath&#x27;).text(&#x27;Made from &#x27; + file);
+          }
+        },
+        src: &#x27;test/fixtures/index.html&#x27;,
+        dest: &#x27;tmp/index.html&#x27;
+      },
+      test2: {
+        options: {
+          read: {selector:&#x27;script&#x27;,attribute:&#x27;src&#x27;,writeto:&#x27;test&#x27;,isPath:true}
+        },
+        src: &#x27;test/fixtures/index.html&#x27;
+      },
+      test3: {
+        options: {
+          read: [
+            {selector:&#x27;link&#x27;,attribute:&#x27;href&#x27;,writeto:&#x27;mylinks&#x27;,isPath:true},
+            {selector:&#x27;script[src]&#x27;,attribute:&#x27;src&#x27;,writeto:&#x27;myscripts&#x27;,isPath:true}
+          ],
+          remove: [&#x27;#removeMe&#x27;],
+          update: [{selector:&#x27;html&#x27;,attribute:&#x27;appmode&#x27;,value:&#x27;production&#x27;}],
+          prefix: [{selector:&#x27;link&#x27;,attribute:&#x27;href&#x27;,value:&#x27;project-name/&#x27;}],
+          suffix: [{selector:&#x27;html&#x27;,attribute:&#x27;version&#x27;,value:&#x27;.0.1&#x27;}],
+          append: [{selector:&#x27;body&#x27;,html:&#x27;&#x3c;div id=&#x22;appended&#x22;&#x3e;Im being appended&#x3c;/div&#x3e;&#x27;}],
+          prepend: [{selector:&#x27;body&#x27;,html:&#x27;&#x3c;span&#x3e;Im being prepended&#x3c;/span&#x3e;&#x27;}],
+          text: [
+            {selector:&#x27;title&#x27;,text:&#x27;CHANGED TITLE&#x27;},
+            {selector:&#x27;#sample2&#x27;,text:&#x27;Ive been updated via callback&#x27;},
+            {selector:&#x27;#filepath&#x27;,text:&#x27;Made from test/fixtures/index.html&#x27;}
+          ],
+        },
+        src: &#x27;test/fixtures/index.html&#x27;,
+        dest: &#x27;tmp/index.html&#x27;
+      },
+      test_order: { //order should be read then remove then any other update operations
+        options: {
+          read: [
+            {selector:&#x27;link&#x27;,attribute:&#x27;href&#x27;,writeto:&#x27;links_order&#x27;,isPath:true},
+            {selector:&#x27;script&#x27;,attribute:&#x27;src&#x27;,writeto:&#x27;scripts_order&#x27;,isPath:true}
+          ],
+          remove: [&#x27;script&#x27;,&#x27;link&#x27;],
+          append: [
+            {selector:&#x27;head&#x27;,html:&#x27;&#x3c;link href=&#x22;concat.css&#x22;&#x3e;&#x27;},
+            {selector:&#x27;body&#x27;,html:&#x27;&#x3c;script src=&#x22;concat.js&#x22;&#x3e;&#x27;}
+          ]
+        },
+        src: &#x27;test/fixtures/order.html&#x27;,
+        dest: &#x27;tmp/order.html&#x27;
+      }
+    },
+    write_src: {
+      test: {
+        src: [&#x27;&#x3c;%= dom_munger.data.links_order %&#x3e;&#x27;,&#x27;&#x3c;%= dom_munger.data.scripts_order %&#x3e;&#x27;]
+      }
+    },
+    concat: {
+      test: {
+        src:[&#x27;test/fixtures/css0.css&#x27;,&#x27;&#x3c;%= dom_munger.data.mylinks %&#x3e;&#x27;],
+        dest:&#x27;tmp/concated.css&#x27;
+      },
+      test3: {
+        src:[&#x27;&#x3c;%= dom_munger.data.myscripts %&#x3e;&#x27;],
+        dest:&#x27;tmp/concated.js&#x27;
+      }
+    },
+    // Unit tests.
+    nodeunit: {
+      tests: [&#x27;test/*_test.js&#x27;],
+    },
+
+  });
+
+  // Actually load this plugin&#x27;s task(s).
+  grunt.loadTasks(&#x27;tasks&#x27;);
+
+  // These plugins provide necessary tasks.
+  grunt.loadNpmTasks(&#x27;grunt-contrib-jshint&#x27;);
+  grunt.loadNpmTasks(&#x27;grunt-contrib-clean&#x27;);
+  grunt.loadNpmTasks(&#x27;grunt-contrib-nodeunit&#x27;);
+  grunt.loadNpmTasks(&#x27;grunt-contrib-concat&#x27;);
+
+  grunt.registerMultiTask(&#x27;write_src&#x27;, &#x27;Testing task.  Writes src files to file.&#x27;, function() {
+    var fs = require(&#x27;fs&#x27;);
+    fs.writeFileSync(&#x27;tmp/read_order.txt&#x27;,JSON.stringify(this.filesSrc));
+  });
+
+  // Whenever the &#x22;test&#x22; task is run, first clean the &#x22;tmp&#x22; dir, then run this ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.grunt-dom-munger.dom_munger" id="apidoc.element.grunt-dom-munger.dom_munger">
+        function <span class="apidocSignatureSpan">grunt-dom-munger.</span>dom_munger
+        <span class="apidocSignatureSpan">(grunt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">dom_munger = function (grunt) {
+
+  var processFile = function(f,dest,options,$,window){
+
+    grunt.log.subhead(&#x27;Processing &#x27; + f.cyan);
+
+    var updated = false;
+
+    if (options.read){
+      options.read = toArray(options.read);
+      options.read.forEach(function(option) {
+        if (!option.selector || !option.attribute || !option.writeto){
+          grunt.log.error(&#x27;Read config missing selector, attribute, and/or writeto options&#x27;);
+        } else {
+
+          var vals = $(option.selector).map(function(i,elem){
+            return $(elem).attr(option.attribute);
+          });
+
+          vals = vals.filter(function(item){
+            return item !== undefined;
+          });
+
+          if (option.isPath){
+            var relativeTo = path.dirname(grunt.file.expand(f));
+            vals = vals.map(function(val){
+              return path.join(relativeTo,val);
+            });
+          }
+
+          grunt.config([&#x27;dom_munger&#x27;,&#x27;data&#x27;,option.writeto],vals);
+          grunt.log.writeln(&#x27;Wrote &#x27; + (option.selector + &#x27;.&#x27; + option.attribute).cyan + &#x27; to &#x27; + (&#x27;dom_munger.data.&#x27;+option.writeto
+).cyan);
+        }
+
+      });
+    }
+
+    if (options.remove){
+      options.remove = toArray(options.remove);
+      options.remove.forEach(function(option) {
+        $(option).remove();
+        grunt.log.writeln(&#x27;Removed &#x27; + option.cyan);
+        updated = true;
+      });
+    }
+
+    if (options.update){
+      options.update = toArray(options.update);
+      options.update.forEach(function(option) {
+        if (!option.selector || !option.attribute || !option.value){
+          grunt.log.error(&#x27;Update config missing selector, attribute, and/or value options&#x27;);
+        } else {
+          $(option.selector).attr(option.attribute,option.value);
+          grunt.log.writeln(&#x27;Updated &#x27; + option.attribute.cyan + &#x27; to &#x27; + option.value.cyan);
+          updated = true;
+        }
+      });
+    }
+
+    if (options.prefix){
+      options.prefix = toArray(options.prefix);
+      options.prefix.forEach(function(option) {
+        if (!option.selector || !option.attribute || !option.value){
+          grunt.log.error(&#x27;Prefix config missing selector, attribute, and/or value options&#x27;);
+        } else {
+          $(option.selector).each(function () {
+             $(this).attr(option.attribute, option.value + $(this).attr(option.attribute));
+          });
+          grunt.log.writeln(&#x27;Prefixed &#x27; + option.attribute.cyan + &#x27; with &#x27; + option.value.cyan);
+          updated = true;
+        }
+      });
+    }
+
+    if (options.suffix){
+      options.suffix = toArray(options.suffix);
+      options.suffix.forEach(function(option) {
+        if (!option.selector || !option.attribute || !option.value){
+          grunt.log.error(&#x27;Suffix config missing selector, attribute, and/or value options&#x27;);
+        } else {
+          $(option.selector).each(function () {
+             $(this).attr(option.attribute, $(this).attr(option.attribute) + option.value);
+          });
+          grunt.log.writeln(&#x27;Suffixed &#x27; + option.attribute.cyan + &#x27; with &#x27; + option.value.cyan);
+          updated = true;
+        }
+      });
+    }
+
+    if (options.append){
+      options.append = toArray(options.append);
+      options.append.forEach(function(option) {
+        if (!option.selector || !option.html){
+          grunt.log.error(&#x27;Append config missing selector and/or html options&#x27;);
+        } else {
+          $(option.selector).append(option.html);
+          grunt.log.writeln(&#x22;Appended to &#x22; + option.selector.cyan);
+          updated = true;
+        }
+      });
+    }
+
+    if (options.prepend){
+      options.prepend = toArray(options.prepend);
+      options.prepend.forEach(function(option) {
+        if (!option.selector || !option.html){
+          grunt.log.error(&#x27;Prepend config missing selector and/or html options&#x27;);
+        } else {
+          $(option.selector).prepend(option.html);
+          grunt.log.writeln(&#x22;Prepended to &#x22; + option.selector.cyan);
+          updated = true;
+        }
+      });
+    }
+
+    if (options.text){
+      options.text = toArray(options.text);
+      options.text.forEach(function(option) {
+        if ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.grunt-dom-munger.toString" id="apidoc.element.grunt-dom-munger.toString">
+        function <span class="apidocSignatureSpan">grunt-dom-munger.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.grunt-dom-munger.dom_munger" id="apidoc.module.grunt-dom-munger.dom_munger">module grunt-dom-munger.dom_munger</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.grunt-dom-munger.dom_munger.dom_munger" id="apidoc.element.grunt-dom-munger.dom_munger.dom_munger">
+        function <span class="apidocSignatureSpan">grunt-dom-munger.</span>dom_munger
+        <span class="apidocSignatureSpan">(grunt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">dom_munger = function (grunt) {
+
+  var processFile = function(f,dest,options,$,window){
+
+    grunt.log.subhead(&#x27;Processing &#x27; + f.cyan);
+
+    var updated = false;
+
+    if (options.read){
+      options.read = toArray(options.read);
+      options.read.forEach(function(option) {
+        if (!option.selector || !option.attribute || !option.writeto){
+          grunt.log.error(&#x27;Read config missing selector, attribute, and/or writeto options&#x27;);
+        } else {
+
+          var vals = $(option.selector).map(function(i,elem){
+            return $(elem).attr(option.attribute);
+          });
+
+          vals = vals.filter(function(item){
+            return item !== undefined;
+          });
+
+          if (option.isPath){
+            var relativeTo = path.dirname(grunt.file.expand(f));
+            vals = vals.map(function(val){
+              return path.join(relativeTo,val);
+            });
+          }
+
+          grunt.config([&#x27;dom_munger&#x27;,&#x27;data&#x27;,option.writeto],vals);
+          grunt.log.writeln(&#x27;Wrote &#x27; + (option.selector + &#x27;.&#x27; + option.attribute).cyan + &#x27; to &#x27; + (&#x27;dom_munger.data.&#x27;+option.writeto
+).cyan);
+        }
+
+      });
+    }
+
+    if (options.remove){
+      options.remove = toArray(options.remove);
+      options.remove.forEach(function(option) {
+        $(option).remove();
+        grunt.log.writeln(&#x27;Removed &#x27; + option.cyan);
+        updated = true;
+      });
+    }
+
+    if (options.update){
+      options.update = toArray(options.update);
+      options.update.forEach(function(option) {
+        if (!option.selector || !option.attribute || !option.value){
+          grunt.log.error(&#x27;Update config missing selector, attribute, and/or value options&#x27;);
+        } else {
+          $(option.selector).attr(option.attribute,option.value);
+          grunt.log.writeln(&#x27;Updated &#x27; + option.attribute.cyan + &#x27; to &#x27; + option.value.cyan);
+          updated = true;
+        }
+      });
+    }
+
+    if (options.prefix){
+      options.prefix = toArray(options.prefix);
+      options.prefix.forEach(function(option) {
+        if (!option.selector || !option.attribute || !option.value){
+          grunt.log.error(&#x27;Prefix config missing selector, attribute, and/or value options&#x27;);
+        } else {
+          $(option.selector).each(function () {
+             $(this).attr(option.attribute, option.value + $(this).attr(option.attribute));
+          });
+          grunt.log.writeln(&#x27;Prefixed &#x27; + option.attribute.cyan + &#x27; with &#x27; + option.value.cyan);
+          updated = true;
+        }
+      });
+    }
+
+    if (options.suffix){
+      options.suffix = toArray(options.suffix);
+      options.suffix.forEach(function(option) {
+        if (!option.selector || !option.attribute || !option.value){
+          grunt.log.error(&#x27;Suffix config missing selector, attribute, and/or value options&#x27;);
+        } else {
+          $(option.selector).each(function () {
+             $(this).attr(option.attribute, $(this).attr(option.attribute) + option.value);
+          });
+          grunt.log.writeln(&#x27;Suffixed &#x27; + option.attribute.cyan + &#x27; with &#x27; + option.value.cyan);
+          updated = true;
+        }
+      });
+    }
+
+    if (options.append){
+      options.append = toArray(options.append);
+      options.append.forEach(function(option) {
+        if (!option.selector || !option.html){
+          grunt.log.error(&#x27;Append config missing selector and/or html options&#x27;);
+        } else {
+          $(option.selector).append(option.html);
+          grunt.log.writeln(&#x22;Appended to &#x22; + option.selector.cyan);
+          updated = true;
+        }
+      });
+    }
+
+    if (options.prepend){
+      options.prepend = toArray(options.prepend);
+      options.prepend.forEach(function(option) {
+        if (!option.selector || !option.html){
+          grunt.log.error(&#x27;Prepend config missing selector and/or html options&#x27;);
+        } else {
+          $(option.selector).prepend(option.html);
+          grunt.log.writeln(&#x22;Prepended to &#x22; + option.selector.cyan);
+          updated = true;
+        }
+      });
+    }
+
+    if (options.text){
+      options.text = toArray(options.text);
+      options.text.forEach(function(option) {
+        if ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.grunt-dom-munger.toString" id="apidoc.module.grunt-dom-munger.toString">module grunt-dom-munger.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.grunt-dom-munger.toString.toString" id="apidoc.element.grunt-dom-munger.toString.toString">
+        function <span class="apidocSignatureSpan">grunt-dom-munger.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
