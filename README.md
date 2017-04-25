@@ -1,4 +1,7 @@
-# api documentation for  [grunt-dom-munger (v3.4.0)](https://github.com/cgross/grunt-dom-munger)  [![npm package](https://img.shields.io/npm/v/npmdoc-grunt-dom-munger.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-grunt-dom-munger) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-grunt-dom-munger.svg)](https://travis-ci.org/npmdoc/node-npmdoc-grunt-dom-munger)
+# npmdoc-grunt-dom-munger
+
+#### basic api documentation for  [grunt-dom-munger (v3.4.0)](https://github.com/cgross/grunt-dom-munger)  [![npm package](https://img.shields.io/npm/v/npmdoc-grunt-dom-munger.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-grunt-dom-munger) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-grunt-dom-munger.svg)](https://travis-ci.org/npmdoc/node-npmdoc-grunt-dom-munger)
+
 #### Read and manipulate HTML with CSS selectors. Ex. read <script> tags from your html.  Remove nodes, add nodes, and more.
 
 [![NPM](https://nodei.co/npm/grunt-dom-munger.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/grunt-dom-munger)
@@ -75,7 +78,8 @@
     "scripts": {
         "test": "grunt test"
     },
-    "version": "3.4.0"
+    "version": "3.4.0",
+    "bin": {}
 }
 ```
 
